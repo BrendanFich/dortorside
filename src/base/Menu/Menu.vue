@@ -55,6 +55,7 @@
         </ul>
       </div>
     </div>
+    <img class="menuBtn" @click="triggerMenu" src="./menu.png" alt="">
   </div>
 </template>
 
@@ -113,16 +114,9 @@ export default {
       ]
     }
   },
-  props: {
-    isShowMenu: {
-      type: Boolean,
-      default: false
-    }
-  },
-  methods: {},
-  watch: {
-    isShowMenu (val) {
-      this.isShow = val
+  methods: {
+    triggerMenu () {
+      this.isShow = !this.isShow
     }
   }
 }
@@ -133,6 +127,9 @@ export default {
 @import '~assets/sass/variable'
 .menu
   .content
+    position: absolute
+    bottom: 0
+    right: 103px
     float: left
     width: 1350px
     height: 848px
@@ -193,6 +190,8 @@ export default {
             margin-bottom: 10px
   .menuBtn
     width: 86px
+    height: 86px
+    border-radius: 50%
     cursor: pointer
     position: absolute
     bottom: -43px

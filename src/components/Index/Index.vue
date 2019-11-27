@@ -26,8 +26,7 @@
           <span class="noticeText">三天后即将进行手术</span>
         </div>
       </div>
-      <menu :isShowMenu='isShowMenu'></menu>
-      <img class="menuBtn" @click="triggerMenu" src="./img/menu.png" alt="">
+      <Menu></Menu>
     </div>
   </div>
 </template>
@@ -45,9 +44,6 @@ export default {
     Menu
   },
   methods: {
-    triggerMenu () {
-      this.isShowMenu = !this.isShowMenu
-    }
   }
 }
 </script>
@@ -173,10 +169,4 @@ export default {
         .btnIcon
           width: 33px
           margin-right: 10px
-    .menuBtn
-      width: 86px
-      cursor: pointer
-      position: absolute
-      bottom: -43px
-      right: 60px
 </style>

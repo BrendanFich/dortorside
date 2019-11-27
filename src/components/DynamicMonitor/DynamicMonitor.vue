@@ -58,6 +58,7 @@
           </div>
         </li>
       </ul>
+      <Menu></Menu>
     </div>
   </div>
 </template>
@@ -153,7 +154,7 @@ export default {
     left: 0
     width: 100%
     margin-top: 50px
-    height: 794px
+    height: 848px
     .mainLeft
       float: left
       width: 370px
