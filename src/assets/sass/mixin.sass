@@ -1,33 +1,6 @@
-// 第一个参数 字体大小
-// 第二参数 字体样式
-// 第三个参数 字体粗细
-// 第四个参数 字体颜色
-// 定义字体
+
 @mixin font($font-size,$font-weight,$color)
   font-size: $font-size
   font-weight: $font-weight
   color: $color
 
-@mixin list($height)
-  border: 1px solid rgba(0, 0, 0, 0.11)
-  background: rgba(255,255,255,1)
-  margin-top: 22px
-  width: 100%
-  height: $height
-  overflow: scroll
-  li
-    height: 32px
-    line-height: 32px
-    padding-left: 17px
-    padding-right: 11px
-    cursor: pointer
-    &.active
-      background: rgba(35,192,179,1)
-      color: white
-      font-weight: bold
-    &:hover
-      @extend .active
-    i
-      float: right
-      line-height: 32px
-      font-size: 20px

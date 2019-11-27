@@ -3,6 +3,32 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import { Button, Input, Switch, Image, Select, Option, Table, TableColumn, Pagination, Form, FormItem, DatePicker, Collapse, CollapseItem, TabPane, Tabs, Tag, Notification, MessageBox } from 'element-ui'
+import 'assets/sass/element-variables.scss'
+import 'assets/sass/iconfonts.sass'
+import 'assets/js/rem'
+
+Vue.use(Button)
+Vue.use(Input)
+Vue.use(Switch)
+Vue.use(Image)
+Vue.use(Option)
+Vue.use(Select)
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(Pagination)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(DatePicker)
+Vue.use(Collapse)
+Vue.use(CollapseItem)
+Vue.use(TabPane)
+Vue.use(Tabs)
+Vue.use(Tag)
+
+Vue.prototype.$notify = Notification
+Vue.prototype.$alert = MessageBox.alert
+Vue.prototype.$confirm = MessageBox.confirm
 
 Vue.config.productionTip = false
 
