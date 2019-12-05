@@ -1,6 +1,7 @@
 <template>
   <div class='remoteConsultation'>
-    <div class="top">
+    护士端
+    <!-- <div class="top">
       <div class="select">
         <el-date-picker
           v-model="value"
@@ -64,8 +65,7 @@
         <el-button type="primary" class="tabBtn" disabled>会诊评价</el-button>
         <el-button type="primary" class="tabBtn" disabled>开始会诊</el-button>
       </div>
-    </div>
-
+    </div> -->
   </div>
 </template>
 
@@ -91,30 +91,30 @@ export default {
 @import '~assets/sass/mixin'
 @import '~assets/sass/variable'
 .remoteConsultation
-  margin: 50px 0 0 66px
-  width: 1751px
-  .top
-    display: flex
-    justify-content: space-between
-    align-items: center
-  .btn
-    width: 100px
-    height: 44px
-    border-radius: 10px
-  .table
-    margin-top: 30px
-    border-radius: 10px 10px 0 0
-    height: 730px
-    background-color: rgba(255,255,255,0.55)
-  .main
-    .tabs
-      width: 100%
-      height: 86px
-      background-color: rgba(255,255,255,0.46)
-      border-radius: 0 0 10px 10px
-      .tabBtn
-        width: 150px
-        border-radius: 10px
-        margin-left: 10px
-        margin-top: 20px
+  // margin: 50px 0 0 66px
+  // width: 1751px
+  // .top
+  //   display: flex
+  //   justify-content: space-between
+  //   align-items: center
+  // .btn
+  //   width: 100px
+  //   height: 44px
+  //   border-radius: 10px
+  // .table
+  //   margin-top: 30px
+  //   border-radius: 10px 10px 0 0
+  //   height: 730px
+  //   background-color: rgba(255,255,255,0.55)
+  // .main
+  //   .tabs
+  //     width: 100%
+  //     height: 86px
+  //     background-color: rgba(255,255,255,0.46)
+  //     border-radius: 0 0 10px 10px
+  //     .tabBtn
+  //       width: 150px
+  //       border-radius: 10px
+  //       margin-left: 10px
+  //       margin-top: 20px
 </style>

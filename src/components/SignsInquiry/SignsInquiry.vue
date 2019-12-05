@@ -1,6 +1,8 @@
 <template>
   <div class='signsInquiry'>
-    体征查询
+    <div class="content">
+
+    </div>
   </div>
 </template>
 
@@ -8,11 +10,15 @@
 export default {
   components: {},
   data () {
-    return {}
+    return {
+      tabIndex: 0,
+      tableData: []
+    }
   },
   computed: {},
   watch: {},
-  methods: {},
+  methods: {
+  },
   created () {}
 }
 </script>
@@ -21,4 +27,11 @@ export default {
 @import '~assets/sass/mixin'
 @import '~assets/sass/variable'
 .signsInquiry
+  margin: 50px 0 0 66px
+  width: 1751px
+  height: 794px
+  .content
+    border-radius: 15px
+    background-color: rgba(255,255,255,0.6)
+    height: 850px
 </style>

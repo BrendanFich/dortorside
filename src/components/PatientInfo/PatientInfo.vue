@@ -6,11 +6,11 @@
     </div>
     <div class="avatar"></div>
     <router-link tag="div" to='/index/dynamicMonitor' class="btn">
-      <img class="btnIcon" src="./img/btnicon.png" alt="">
+      <i class="icon-monitor"></i>
       <span class="btnText">动态监控</span>
     </router-link>
     <div class="notice">
-      <img class="noticeIcon" src="./img/light.png" alt="">
+      <i class="icon-tip"></i>
       <span class="noticeText">三天后即将进行手术</span>
     </div>
   </div>
@@ -65,21 +65,22 @@ export default {
     width: 317px
     height: 60px
     @include font(24px, 800, $color-white)
+    line-height: 24px
     border-radius: 10px
     display: flex
     justify-content: center
     align-items: center
     cursor: pointer
     margin-bottom: 28px
-    .btnIcon
-      width: 36px
-      margin-right: 22px
+    .icon-monitor
+      font-size: 36px
+      margin-right: 18px
   .notice
     display: flex
     justify-content: center
     align-items: center
     @include font(24px, 400, $color-word-red)
-    .btnIcon
-      width: 33px
+    .icon-tip
+      font-size: 36px
       margin-right: 10px
 </style>

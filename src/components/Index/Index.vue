@@ -1,20 +1,23 @@
 <template>
   <div class="index">
     <div class="top">
-      <div class="status">· 住院中</div>
-      <div class="balance">
+      <div class="status" v-if="$route.path.includes('patientInfo')">· 住院中</div>
+      <div class="balance" v-if="$route.path.includes('patientInfo')">
         <i class="icon-balance"></i>余额：
         <span>￥2000.00</span>
+      </div>
+      <div class="pageTitle" v-for="(item, index) in nav" :key="index">
+        <span v-if="$route.path.includes(item.path)">{{item.text}}</span>
       </div>
       <div class="time">
         <div class="clock">08:23:50</div>
         <div class="date">2019-06-02</div>
       </div>
-      <img class="back" src="./img/back.png" @click="back"/>
-      <img class="home" src="./img/home.png" @click="home"/>
+      <i class="icon-back" @click="back"></i>
+      <i class="icon-home" @click="home"></i>
     </div>
     <div class="main">
-      <router-view class="view"></router-view>
+      <router-view></router-view>
       <div class="menu">
         <div class="mask" v-show="isShowMenu" @click="writeMessageFun($event)">
           <div class="content" ref="msk">
@@ -74,7 +77,9 @@
             </div>
           </div>
         </div>
-        <img class="menuBtn" @click="triggerMenu" src="./img/menu.png" alt />
+        <div class="menuBtn" @click="triggerMenu">
+          <i class="icon-button"></i>
+        </div>
       </div>
     </div>
   </div>
@@ -135,8 +140,6 @@ export default {
       ]
     }
   },
-  components: {
-  },
   methods: {
     triggerMenu () {
       this.isShowMenu = !this.isShowMenu
@@ -163,7 +166,7 @@ export default {
   width: 100%
   height: 100vh
   position: relative
-  background: url('~assets/background.png')
+  background: url('./background.png')
   .top
     position: absolute
     top: 0
@@ -190,7 +193,7 @@ export default {
       float: left
       height: 120px
       line-height: 120px
-    .balance
+    .balance,.pageTitle
       float: left
       height: 120px
       line-height: 120px
@@ -200,6 +203,10 @@ export default {
         margin-right: 8px
       span
         @include font(24px, 800, $color-money-red)
+    .pageTitle>span
+      display: inline-block
+      margin-left: 90px
+      @include font(24px, 800, $color-word-blue)
     .time
       float: right
       width: 210px
@@ -210,17 +217,25 @@ export default {
       justify-content: center
       align-items: center
       line-height: 40px
-    .back
+    .icon-back
       float: right
       width: 120px
       height: 120px
       cursor: pointer
-    .home
+      line-height: 120px
+      text-align: center
+      color: $color-primary
+      background-color: rgba(255,255,255,0.6)
+    .icon-home
       width: 120px
       height: 120px
       margin-right: 20px
       float: right
+      color: $color-white
       cursor: pointer
+      line-height: 120px
+      text-align: center
+      background-color: $color-primary
   .main
     position: absolute
     top: 120px
@@ -258,7 +273,7 @@ export default {
             -o-filter: blur(10px)
             filter: blur(10px)
             z-index: -3
-            background-image: url('~assets/background.png')
+            background-image: url('./background.png')
           .title
             line-height: 88px
             padding-left: 50px
@@ -315,6 +330,10 @@ export default {
       .menuBtn
         width: 86px
         height: 86px
+        line-height: 96px
+        text-align: center
+        background: $color-white
+        color: $color-primary
         border-radius: 50%
         cursor: pointer
         position: fixed

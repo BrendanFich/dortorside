@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import { Button, Input, Switch, Image, Select, Option, Table, TableColumn, Pagination, Form, FormItem, DatePicker, Collapse, CollapseItem, TabPane, Tabs, Tag, Notification, MessageBox } from 'element-ui'
+import { Checkbox, Menu, Submenu, MenuItem, Button, Input, Switch, Image, Select, Option, Table, TableColumn, Pagination, Form, FormItem, DatePicker, Collapse, CollapseItem, TabPane, Tabs, Tag, Notification, MessageBox } from 'element-ui'
 import 'assets/sass/element-variables.scss'
 import 'assets/sass/iconfonts.sass'
 import 'assets/js/rem'
@@ -25,6 +25,10 @@ Vue.use(CollapseItem)
 Vue.use(TabPane)
 Vue.use(Tabs)
 Vue.use(Tag)
+Vue.use(Menu)
+Vue.use(Submenu)
+Vue.use(MenuItem)
+Vue.use(Checkbox)
 
 Vue.prototype.$notify = Notification
 Vue.prototype.$alert = MessageBox.alert

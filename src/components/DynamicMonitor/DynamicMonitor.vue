@@ -2,7 +2,13 @@
   <div class="dynamicMonitor">
     <div class="mainLeft">
       <div class="title">病人列表</div>
-      <div class="list"></div>
+      <ul class="list">
+        <li v-for="(item, index) in patientList" :key="index" @click="select(index)" :class="{active: activeIndex === index}">
+          <span class="name">{{item.name}}</span>
+          <span class="age">{{item.age}}岁</span>
+          <span class="updateTime">{{item.updateTime}}</span>
+        </li>
+      </ul>
     </div>
     <div class="mainMiddle">
       <div class="image"></div>
@@ -14,36 +20,12 @@
       </div>
     </div>
     <ul class="mainRight">
-      <li class="item">
-        <div class="name">高度调节</div>
+      <li class="item" v-for="(item, index) in angleData" :key="index">
+        <div class="name">{{item.name}}</div>
         <div class="adjust">
-          <el-button>+</el-button>
-          <div class="value">0</div>
-          <el-button>-</el-button>
-        </div>
-      </li>
-      <li class="item">
-        <div class="name">背板调节</div>
-        <div class="adjust">
-          <el-button>+</el-button>
-          <div class="value">30</div>
-          <el-button>-</el-button>
-        </div>
-      </li>
-      <li class="item">
-        <div class="name">脚板调节</div>
-        <div class="adjust">
-          <el-button>+</el-button>
-          <div class="value">30</div>
-          <el-button>-</el-button>
-        </div>
-      </li>
-      <li class="item">
-        <div class="name">倾斜调节</div>
-        <div class="adjust">
-          <el-button>+</el-button>
-          <div class="value">30</div>
-          <el-button>-</el-button>
+          <el-button @click="item.value -= 1">-</el-button>
+          <div class="value">{{item.value}}</div>
+          <el-button @click="item.value += 1">+</el-button>
         </div>
       </li>
     </ul>
@@ -55,12 +37,48 @@ export default {
   name: 'Index',
   data () {
     return {
-      isShowMenu: false
+      activeIndex: 0,
+      isShowMenu: false,
+      patientList: [
+        {
+          name: '周秀娜',
+          age: '28',
+          updateTime: '2019-02-20'
+        },
+        {
+          name: '周秀娜',
+          age: '28',
+          updateTime: '2019-02-20'
+        },
+        {
+          name: '周秀娜',
+          age: '28',
+          updateTime: '2019-02-20'
+        }
+      ],
+      angleData: [
+        {
+          name: '高度调节',
+          value: 8
+        },
+        {
+          name: '背板调节',
+          value: 30
+        },
+        {
+          name: '脚板调节',
+          value: 30
+        },
+        {
+          name: '倾斜调节',
+          value: 30
+        }
+      ]
     }
   },
   methods: {
-    triggerMenu () {
-      this.isShowMenu = !this.isShowMenu
+    select (index) {
+      this.activeIndex = index
     }
   }
 }
@@ -86,9 +104,32 @@ export default {
       line-height: 71px
       @include font(24px, 400, $color-word-grey)
     .list
+      padding: 0
+      margin: 0
       height: calc(100% - 71px)
       background-color: $color-white
       border-radius: 0 0 15px 15px
+      li
+        height: 50px
+        display: flex
+        align-items: center
+        justify-content: space-between
+        .name
+          display: inline-block
+          width: 120px
+          text-align: center
+          @include font(24px, 800, $color-word-grey)
+        .age
+          display: inline-block
+          width: 80px
+          @include font(18px, 800, $color-word-grey)
+        .updateTime
+          width: 157px
+          @include font(12px, 400, $color-word-grey)
+      .active
+        background: $color-primary
+        .name,.age,.updateTime
+          color: $color-white
   .mainMiddle
     float: left
     width: 805px
