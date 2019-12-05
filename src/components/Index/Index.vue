@@ -19,7 +19,7 @@
     <div class="main">
       <router-view></router-view>
       <div class="menu">
-        <div class="mask" v-show="isShowMenu" @click="writeMessageFun($event)">
+        <div class="mask" v-show="isShowMenu" @click="show($event)">
           <div class="content" ref="msk">
             <div class="title">广东省中西结合医院——骨外科</div>
             <div class="mian">
@@ -144,7 +144,7 @@ export default {
     triggerMenu () {
       this.isShowMenu = !this.isShowMenu
     },
-    writeMessageFun (ev) {
+    show (ev) {
       if (!this.$refs.msk.contains(ev.target)) {
         this.isShowMenu = false
       }

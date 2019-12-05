@@ -90,6 +90,10 @@ export default {
       border-radius: 15px 0 0 15px
       >>>i
         margin-top: -12px
+      >>>.el-submenu__title
+        font-size: 24px
+      >>>.el-menu-item
+        font-size: 24px
     .right
       float: left
       width: 1500px
@@ -102,8 +106,10 @@ export default {
         >li
           width: 400px
           height: 70px
+          font-size: 24px
           .key
-            color: $color-word-blue
+            @include font(24px, 400, $color-word-blue)
             display: inline-block
             width: 150px
+
 </style>
