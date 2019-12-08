@@ -34,49 +34,73 @@
       <li class="item">
         <div class="name">高度调节</div>
         <div class="adjust">
-          <div class="fakeBtn"
-            @mousedown="start"
-            @mousemove="move"
-            @mouseup="end('height')"
-          >-</div>
+          <el-button
+            class="fakeBtn"
+            @touchstart.native="start('height', '-')"
+            @touchmove.native="move"
+            @touchend.native="end('height', '-')"
+          >-</el-button>
           <div class="value">{{height}}</div>
-          <div class="fakeBtn" @click="height += 1">+</div>
+          <div
+            class="fakeBtn"
+            @touchstart="start('height', '+')"
+            @touchmove="move"
+            @touchend="end('height', '+')"
+          >+</div>
         </div>
       </li>
       <li class="item">
         <div class="name">背板调节</div>
         <div class="adjust">
-          <div class="fakeBtn"
-            @mousedown="start"
-            @mousemove="move"
-            @mouseup="end('backAngle')"
+          <div
+            class="fakeBtn"
+            @touchstart="start('backAngle', '-')"
+            @touchmove="move"
+            @touchend="end('backAngle', '-')"
           >-</div>
           <div class="value">{{backAngle}}</div>
-          <div class="fakeBtn" @click="backAngle += 1">+</div>
+          <div
+            class="fakeBtn"
+            @touchstart="start('backAngle', '+')"
+            @touchmove="move"
+            @touchend="end('backAngle', '+')"
+          >+</div>
         </div>
       </li>
       <li class="item">
         <div class="name">脚板调节</div>
         <div class="adjust">
-          <div class="fakeBtn"
-            @mousedown="start"
-            @mousemove="move"
-            @mouseup="end('footerAngle')"
+          <div
+            class="fakeBtn"
+            @touchstart="start('footerAngle', '-')"
+            @touchmove="move"
+            @touchend="end('footerAngle', '-')"
           >-</div>
           <div class="value">{{footerAngle}}</div>
-          <div class="fakeBtn" @click="footerAngle += 1">+</div>
+          <div
+            class="fakeBtn"
+            @touchstart="start('footerAngle', '+')"
+            @touchmove="move"
+            @touchend="end('footerAngle', '+')"
+          >+</div>
         </div>
       </li>
       <li class="item">
         <div class="name">倾斜调节</div>
         <div class="adjust">
-          <div class="fakeBtn"
-            @mousedown="start"
-            @mousemove="move"
-            @mouseup="end('tiltAngle')"
+          <div
+            class="fakeBtn"
+            @touchstart="start('tiltAngle', '-')"
+            @touchmove="move"
+            @touchend="end('tiltAngle', '-')"
           >-</div>
           <div class="value">{{tiltAngle}}</div>
-          <div class="fakeBtn" @click="tiltAngle += 1">+</div>
+          <div
+            class="fakeBtn"
+            @touchstart="start('tiltAngle', '+')"
+            @touchmove="move"
+            @touchend="end('tiltAngle', '+')"
+          >+</div>
         </div>
       </li>
     </ul>
@@ -121,43 +145,61 @@ export default {
     select (index) {
       this.activeIndex = index
     },
-    start () {
-      console.log('----start----')
+    changeBedParams (itemName, operation) {
+      if (operation === '+') {
+        switch (itemName) {
+          case 'height':
+            this.height += 1
+            break
+          case 'backAngle':
+            this.backAngle += 1
+            break
+          case 'footerAngle':
+            this.footerAngle += 1
+            break
+          case 'tiltAngle':
+            this.tiltAngle += 1
+            break
+        }
+      }
+      if (operation === '-') {
+        switch (itemName) {
+          case 'height':
+            this.height -= 1
+            break
+          case 'backAngle':
+            this.backAngle -= 1
+            break
+          case 'footerAngle':
+            this.footerAngle -= 1
+            break
+          case 'tiltAngle':
+            this.tiltAngle -= 1
+            break
+        }
+      }
+    },
+    start (itemName, operation) {
       let self = this
       this.longClick = 0
-      this.timeOutEvent = setTimeout(function () {
+      this.timeOutEvent = setTimeout(() => {
         self.longClick = 1
         self.intervalTimer = setInterval(() => {
-          console.log('长按')
-        }, 300)
-      }, 500)
+          self.changeBedParams(itemName, operation)
+        }, 100)
+      }, 200)
     },
-    move: function (e) {
-      console.log('----move----')
-      console.log(this.intervalTimer)
+    move (e) {
       clearInterval(this.intervalTimer)
       this.timeOutEvent = 0
       e.preventDefault()
     },
-    end (itemName) {
-      let self = this
-      console.log('----end----')
+    end (itemName, operation) {
       clearTimeout(this.timeOutEvent)
       clearInterval(this.intervalTimer)
       if (this.timeOutEvent !== 0 && this.longClick === 0) {
-        switch (itemName) {
-          case 'height':
-            self.height -= 1
-            break
-          case 'backAngle':
-            self.backAngle -= 1
-            break
-          case 'footerAngle':
-            self.footerAngle -= 1
-            break
-        }
+        this.changeBedParams(itemName, operation)
       }
-      return false
     }
   }
 }
@@ -267,12 +309,4 @@ export default {
         width: 127px
         text-align: center
         @include font(46.24px, 800, $color-primary)
-      .fakeBtn
-        @include font(24px, 800, $color-white)
-        background: $color-btn-blue
-        width: 60px
-        height: 60px
-        line-height: 60px
-        border-radius: 10px
-
 </style>
