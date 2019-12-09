@@ -22,19 +22,20 @@
         <div class="mask" v-show="isShowMenu" @click="show($event)">
           <div class="content" ref="msk">
             <div class="mian">
-              <ul class="nav">
+              <div class="nav">
                 <router-link
                   :to="item.path"
                   v-for="(item, index) in nav"
                   :key="index"
-                  tag="li"
+                  tag="el-button"
                   class="navBtn"
+                  :class="{active: $route.path.includes(item.path)}"
                   @click.native="isShowMenu = false"
                 >
                   <i :class="item.icon"></i>
                   <p>{{item.text}}</p>
                 </router-link>
-              </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -259,8 +260,15 @@ export default {
                 p
                   margin: 0
                 i
+                  display: inline-block
                   @include font(40px, 800, $color-word-blue)
-                  margin-bottom: 10px
+                  margin-bottom: 15px
+              .active
+                color: $color-white
+                background: $color-word-blue
+                border-color: $color-word-blue
+                i
+                  color: $color-white
       .menuBtn
         width: 86px
         height: 86px

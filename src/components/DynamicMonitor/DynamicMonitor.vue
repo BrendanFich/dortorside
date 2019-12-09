@@ -35,72 +35,64 @@
         <div class="name">高度调节</div>
         <div class="adjust">
           <el-button
-            class="fakeBtn"
             @touchstart.native="start('height', '-')"
             @touchmove.native="move"
             @touchend.native="end('height', '-')"
           >-</el-button>
           <div class="value">{{height}}</div>
-          <div
-            class="fakeBtn"
-            @touchstart="start('height', '+')"
-            @touchmove="move"
-            @touchend="end('height', '+')"
-          >+</div>
+          <el-button
+            @touchstart.native="start('height', '+')"
+            @touchmove.native="move"
+            @touchend.native="end('height', '+')"
+          >+</el-button>
         </div>
       </li>
       <li class="item">
         <div class="name">背板调节</div>
         <div class="adjust">
-          <div
-            class="fakeBtn"
-            @touchstart="start('backAngle', '-')"
-            @touchmove="move"
-            @touchend="end('backAngle', '-')"
-          >-</div>
+          <el-button
+            @touchstart.native="start('backAngle', '-')"
+            @touchmove.native="move"
+            @touchend.native="end('backAngle', '-')"
+          >-</el-button>
           <div class="value">{{backAngle}}</div>
-          <div
-            class="fakeBtn"
-            @touchstart="start('backAngle', '+')"
-            @touchmove="move"
-            @touchend="end('backAngle', '+')"
-          >+</div>
+          <el-button
+            @touchstart.native="start('backAngle', '+')"
+            @touchmove.native="move"
+            @touchend.native="end('backAngle', '+')"
+          >+</el-button>
         </div>
       </li>
       <li class="item">
         <div class="name">脚板调节</div>
         <div class="adjust">
-          <div
-            class="fakeBtn"
-            @touchstart="start('footerAngle', '-')"
-            @touchmove="move"
-            @touchend="end('footerAngle', '-')"
-          >-</div>
+          <el-button
+            @touchstart.native="start('footerAngle', '-')"
+            @touchmove.native="move"
+            @touchend.native="end('footerAngle', '-')"
+          >-</el-button>
           <div class="value">{{footerAngle}}</div>
-          <div
-            class="fakeBtn"
-            @touchstart="start('footerAngle', '+')"
-            @touchmove="move"
-            @touchend="end('footerAngle', '+')"
-          >+</div>
+          <el-button
+            @touchstart.native="start('footerAngle', '+')"
+            @touchmove.native="move"
+            @touchend.native="end('footerAngle', '+')"
+          >+</el-button>
         </div>
       </li>
       <li class="item">
         <div class="name">倾斜调节</div>
         <div class="adjust">
-          <div
-            class="fakeBtn"
-            @touchstart="start('tiltAngle', '-')"
-            @touchmove="move"
-            @touchend="end('tiltAngle', '-')"
-          >-</div>
+          <el-button
+            @touchstart.native="start('tiltAngle', '-')"
+            @touchmove.native="move"
+            @touchend.native="end('tiltAngle', '-')"
+          >-</el-button>
           <div class="value">{{tiltAngle}}</div>
-          <div
-            class="fakeBtn"
-            @touchstart="start('tiltAngle', '+')"
-            @touchmove="move"
-            @touchend="end('tiltAngle', '+')"
-          >+</div>
+          <el-button
+            @touchstart.native="start('tiltAngle', '+')"
+            @touchmove.native="move"
+            @touchend.native="end('tiltAngle', '+')"
+          >+</el-button>
         </div>
       </li>
     </ul>
@@ -309,4 +301,10 @@ export default {
         width: 127px
         text-align: center
         @include font(46.24px, 800, $color-primary)
+      .el-button
+        @include font(24px, 800, $color-white)
+        background: $color-btn-blue
+        width: 60px
+        height: 60px
+        border-radius: 10px
 </style>

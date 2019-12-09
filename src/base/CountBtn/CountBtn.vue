@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       newValue: this.value
     }
@@ -30,7 +30,7 @@ export default {
     }
   },
   watch: {
-    type (val){
+    type (val) {
       this.newValue = val
     }
   },
